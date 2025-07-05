@@ -20,7 +20,7 @@ struct InventoryListView: View {
 					.listRowSeparator(.hidden)
 					.contentShape(Rectangle())
 					.onTapGesture {
-						
+						formType = .edit(model)
 					}
 					
 			}
