@@ -6,14 +6,42 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F28A524A2E1929DE000C084C /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52492E1929DE000C084C /* RealityKitContent */; };
+		F28A52582E193126000C084C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52572E193126000C084C /* FirebaseFirestore */; };
+		F28A525A2E193126000C084C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52592E193126000C084C /* FirebaseStorage */; };
+		F28A525D2E193179000C084C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F28A525C2E193179000C084C /* FirebaseFirestore */; };
+		F28A525F2E193181000C084C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F28A525E2E193181000C084C /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		F28A52332E192908000C084C /* XCAInventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCAInventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F28A52452E1929DE000C084C /* XCAInventoryVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCAInventoryVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F28A52482E1929DE000C084C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F28A52522E1929E0000C084C /* Exceptions for "XCAInventoryVision" folder in "XCAInventoryVision" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F28A52442E1929DE000C084C /* XCAInventoryVision */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F28A52352E192908000C084C /* XCAInventory */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = XCAInventory;
+			sourceTree = "<group>";
+		};
+		F28A52462E1929DE000C084C /* XCAInventoryVision */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F28A52522E1929E0000C084C /* Exceptions for "XCAInventoryVision" folder in "XCAInventoryVision" target */,
+			);
+			path = XCAInventoryVision;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +51,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F28A52582E193126000C084C /* FirebaseFirestore in Frameworks */,
+				F28A525A2E193126000C084C /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28A52422E1929DE000C084C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F28A524A2E1929DE000C084C /* RealityKitContent in Frameworks */,
+				F28A525D2E193179000C084C /* FirebaseFirestore in Frameworks */,
+				F28A525F2E193181000C084C /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +73,9 @@
 			isa = PBXGroup;
 			children = (
 				F28A52352E192908000C084C /* XCAInventory */,
+				F28A52462E1929DE000C084C /* XCAInventoryVision */,
+				F28A52472E1929DE000C084C /* Packages */,
+				F28A525B2E193178000C084C /* Frameworks */,
 				F28A52342E192908000C084C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,8 +84,24 @@
 			isa = PBXGroup;
 			children = (
 				F28A52332E192908000C084C /* XCAInventory.app */,
+				F28A52452E1929DE000C084C /* XCAInventoryVision.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F28A52472E1929DE000C084C /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				F28A52482E1929DE000C084C /* RealityKitContent */,
+			);
+			path = Packages;
+			sourceTree = "<group>";
+		};
+		F28A525B2E193178000C084C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,9 +124,36 @@
 			);
 			name = XCAInventory;
 			packageProductDependencies = (
+				F28A52572E193126000C084C /* FirebaseFirestore */,
+				F28A52592E193126000C084C /* FirebaseStorage */,
 			);
 			productName = XCAInventory;
 			productReference = F28A52332E192908000C084C /* XCAInventory.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F28A52442E1929DE000C084C /* XCAInventoryVision */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F28A52532E1929E0000C084C /* Build configuration list for PBXNativeTarget "XCAInventoryVision" */;
+			buildPhases = (
+				F28A52412E1929DE000C084C /* Sources */,
+				F28A52422E1929DE000C084C /* Frameworks */,
+				F28A52432E1929DE000C084C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				F28A52462E1929DE000C084C /* XCAInventoryVision */,
+			);
+			name = XCAInventoryVision;
+			packageProductDependencies = (
+				F28A52492E1929DE000C084C /* RealityKitContent */,
+				F28A525C2E193179000C084C /* FirebaseFirestore */,
+				F28A525E2E193181000C084C /* FirebaseStorage */,
+			);
+			productName = XCAInventoryVision;
+			productReference = F28A52452E1929DE000C084C /* XCAInventoryVision.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -83,6 +169,9 @@
 					F28A52322E192908000C084C = {
 						CreatedOnToolsVersion = 16.3;
 					};
+					F28A52442E1929DE000C084C = {
+						CreatedOnToolsVersion = 16.3;
+					};
 				};
 			};
 			buildConfigurationList = F28A522E2E192908000C084C /* Build configuration list for PBXProject "XCAInventory" */;
@@ -94,12 +183,16 @@
 			);
 			mainGroup = F28A522A2E192908000C084C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				F28A52562E193126000C084C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = F28A52342E192908000C084C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F28A52322E192908000C084C /* XCAInventory */,
+				F28A52442E1929DE000C084C /* XCAInventoryVision */,
 			);
 		};
 /* End PBXProject section */
@@ -112,10 +205,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F28A52432E1929DE000C084C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F28A522F2E192908000C084C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F28A52412E1929DE000C084C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -302,6 +409,60 @@
 			};
 			name = Release;
 		};
+		F28A52542E1929E0000C084C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7RC8RLSUKW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudhir.XCAInventoryVision;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Debug;
+		};
+		F28A52552E1929E0000C084C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7RC8RLSUKW;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sudhir.XCAInventoryVision;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = xros;
+				SUPPORTED_PLATFORMS = "xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 7;
+				XROS_DEPLOYMENT_TARGET = 2.4;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -323,7 +484,54 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		F28A52532E1929E0000C084C /* Build configuration list for PBXNativeTarget "XCAInventoryVision" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F28A52542E1929E0000C084C /* Debug */,
+				F28A52552E1929E0000C084C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F28A52562E193126000C084C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.15.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F28A52492E1929DE000C084C /* RealityKitContent */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = RealityKitContent;
+		};
+		F28A52572E193126000C084C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F28A52562E193126000C084C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F28A52592E193126000C084C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F28A52562E193126000C084C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		F28A525C2E193179000C084C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F28A52562E193126000C084C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F28A525E2E193181000C084C /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F28A52562E193126000C084C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F28A522B2E192908000C084C /* Project object */;
 }
