@@ -31,5 +31,7 @@ struct InventoryListView: View {
 }
 
 #Preview {
-    InventoryListView()
+	NavigationView {
+		InventoryListView()
+	}
 }
