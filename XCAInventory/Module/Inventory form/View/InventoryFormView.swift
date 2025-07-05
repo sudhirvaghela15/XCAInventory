@@ -29,6 +29,31 @@ struct InventoryFormView: View {
 			List {
 				inputSection
 				arSection
+				
+				if case let .delete(type) = viewModel.loadingState {
+					HStack {
+						Spacer()
+						VStack(spacing: 10) {
+							Text("Deleting \(type == .usdzWithThumbnail ? "USDZ file" : "Item")")
+								.foregroundStyle(.red )
+						}
+						Spacer()
+					}
+				}
+				
+				if case .edit = viewModel.formType {
+					Button("Delete", role: .destructive) {
+						Task {
+							do {
+								try await viewModel.deleteItem()
+								dismiss()
+							} catch {
+								viewModel.error = error.localizedDescription
+							}
+						}
+					}
+				}
+				
 			}
 		}.toolbar {
 			ToolbarItem(placement: .cancellationAction) {
@@ -125,6 +150,12 @@ struct InventoryFormView: View {
 						Image(systemName: "arkit")
 							.imageScale(.large)
 						Text("View")
+					}
+				}
+				
+				Button("Delete USDZ", role: .destructive) {
+					Task {
+						await viewModel.usdzDelete()
 					}
 				}
 			} else {
