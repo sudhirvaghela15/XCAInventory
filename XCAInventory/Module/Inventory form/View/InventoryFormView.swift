@@ -7,6 +7,7 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import SafariServices
 
 struct InventoryFormView: View {
 	
@@ -27,16 +28,15 @@ struct InventoryFormView: View {
 		Form {
 			List {
 				inputSection
+				arSection
 			}
 		}.toolbar {
 			ToolbarItem(placement: .cancellationAction) {
-				
 				RoundButton(
 					action: { dismiss() },
 					image: Image(systemName: "xmark")
 				).disabled(viewModel.loadingState != .none)
 			}
-			
 			
 			ToolbarItem(placement: .confirmationAction) {
 				Button("Save") {
@@ -96,6 +96,16 @@ struct InventoryFormView: View {
 			TextField("Name", text: $viewModel.name)
 			Stepper("Quantity \(viewModel.quantity)", value: $viewModel.quantity)
 		}.disabled(viewModel.loadingState != .none)
+	}
+	
+	var arSection: some View {
+		Text("AR Section")
+	}
+	
+	func viewAR(url: URL) {
+		let safariVC = SFSafariViewController(url: url)
+		let vc = UIApplication.shared.firstKeyWindow?.rootViewController?.presentedViewController ?? UIApplication.shared.firstKeyWindow?.rootViewController
+		vc?.present(safariVC, animated: true)
 	}
 }
 
