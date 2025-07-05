@@ -99,7 +99,63 @@ struct InventoryFormView: View {
 	}
 	
 	var arSection: some View {
-		Text("AR Section")
+		Section("AR Model") {
+			if let thumbnailURL = viewModel.thumbnailURL {
+				AsyncImage(url: thumbnailURL) { result in
+					switch result {
+						case .success(let image):
+							image.resizable()
+								.aspectRatio(contentMode: .fit)
+								.frame(maxWidth: .infinity, maxHeight: 300)
+						case .failure:
+							Text("Failed to fetch thumbnail")
+						default: ProgressView()
+					}
+				}.onTapGesture {
+					guard let usdzURL = viewModel.usdzURL else { return }
+					viewAR(url: usdzURL)
+				}
+			}
+			
+			if let usdzURL = viewModel.usdzURL {
+				Button {
+					viewAR(url: usdzURL)
+				} label: {
+					HStack {
+						Image(systemName: "arkit")
+							.imageScale(.large)
+						Text("View")
+					}
+				}
+			} else {
+				Button {
+					viewModel.showUSDZSource.toggle()
+				} label: {
+					HStack {
+						Image(systemName: "arkit")
+							.imageScale(.large)
+						Text("Add USDZ")
+					}
+				}
+			}
+			
+			if let progress = viewModel.uploadProgress,
+				case let .uploading(type) = viewModel.loadingState,
+			   progress.totalUnitCount > 0 {
+				VStack {
+					ProgressView(value: progress.fractionCompleted) {
+						Text(
+							"Uploading \(type == .usdz ? "USDZ" : "Thumbnail") file \(Int(progress.fractionCompleted * 100))%"
+						)
+					}
+					
+					Text(
+						"\(viewModel.byteCountFormatter.string(fromByteCount: progress.completeUnitCount)) / \(viewModel.byteCountFormatter.string(fromByteCount: progress.totalUnitCount))"
+					)
+				}
+			}
+		}
+		.disabled(viewModel.loadingState != .none)
 	}
 	
 	func viewAR(url: URL) {

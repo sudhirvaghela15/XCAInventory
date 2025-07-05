@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F2305CE82E1940B400EE091E /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F2305CE72E1940B400EE091E /* RealityKitContent */; };
+		F2773A3E2E19D9680034C5B6 /* AirForce1XCA.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F2773A3C2E19D9680034C5B6 /* AirForce1XCA.usdz */; };
+		F2773A3F2E19D9680034C5B6 /* xbox-controller.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F2773A3D2E19D9680034C5B6 /* xbox-controller.usdz */; };
+		F2773A402E19D9690034C5B6 /* AirForce1XCA.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F2773A3C2E19D9680034C5B6 /* AirForce1XCA.usdz */; };
+		F2773A412E19D9690034C5B6 /* xbox-controller.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F2773A3D2E19D9680034C5B6 /* xbox-controller.usdz */; };
 		F28A52582E193126000C084C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52572E193126000C084C /* FirebaseFirestore */; };
 		F28A525A2E193126000C084C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52592E193126000C084C /* FirebaseStorage */; };
 		F28A525D2E193179000C084C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F28A525C2E193179000C084C /* FirebaseFirestore */; };
@@ -15,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F2773A3C2E19D9680034C5B6 /* AirForce1XCA.usdz */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirForce1XCA.usdz; sourceTree = "<group>"; };
+		F2773A3D2E19D9680034C5B6 /* xbox-controller.usdz */ = {isa = PBXFileReference; lastKnownFileType = file; path = "xbox-controller.usdz"; sourceTree = "<group>"; };
 		F28A52332E192908000C084C /* XCAInventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCAInventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F28A52452E1929DE000C084C /* XCAInventoryVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCAInventoryVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F28A52482E1929DE000C084C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
@@ -87,6 +93,8 @@
 		F28A522A2E192908000C084C = {
 			isa = PBXGroup;
 			children = (
+				F2773A3C2E19D9680034C5B6 /* AirForce1XCA.usdz */,
+				F2773A3D2E19D9680034C5B6 /* xbox-controller.usdz */,
 				F2305CE92E19410D00EE091E /* Shared Module */,
 				F28A52352E192908000C084C /* XCAInventory */,
 				F28A52462E1929DE000C084C /* XCAInventoryVision */,
@@ -220,6 +228,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2773A3E2E19D9680034C5B6 /* AirForce1XCA.usdz in Resources */,
+				F2773A3F2E19D9680034C5B6 /* xbox-controller.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,6 +237,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2773A402E19D9690034C5B6 /* AirForce1XCA.usdz in Resources */,
+				F2773A412E19D9690034C5B6 /* xbox-controller.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
