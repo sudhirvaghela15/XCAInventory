@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct InventoryFormView: View {
 	
@@ -14,6 +15,15 @@ struct InventoryFormView: View {
 	@Environment(\.dismiss) var dismiss
 	
     var body: some View {
+		
+		let isPresentedFileImporter = Binding(
+		   get: {
+			   viewModel.selectedUSDZSourceTypee == .fileImported
+		   }, set: { _ in
+				 viewModel.selectedUSDZSourceTypee = nil
+		   }
+	   )
+		
 		Form {
 			List {
 				inputSection
@@ -41,7 +51,35 @@ struct InventoryFormView: View {
 						.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
 				)
 			}
-		}.alert(
+		}
+		.confirmationDialog(
+			"Add USDZ",
+			isPresented: $viewModel.showUSDZSource,
+			titleVisibility: .visible,
+			actions: {
+				Button("Select file") {
+					viewModel.selectedUSDZSourceTypee = .fileImported
+				}
+				
+				Button("Object Capture") {
+					viewModel.selectedUSDZSourceTypee = .objectCaptured
+				}
+			}
+		)
+		.fileImporter(isPresented: isPresentedFileImporter,
+			allowedContentTypes: [UTType.usdz],
+			onCompletion: { result in
+				switch result {
+				case .success(let url):
+					Task {
+						await viewModel.uploadUSDZ(fileURL: url)
+					}
+				case .failure(let failure):
+					viewModel.error = failure.localizedDescription
+				}
+			}
+		)
+		.alert(
 			isPresented: .constant(viewModel.error != nil),
 			error: "An Error Occured",
 			actions: { _ in },
