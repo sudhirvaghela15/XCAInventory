@@ -17,7 +17,7 @@ struct InventoryListView: View {
 				Text(model.name)
 			}
 		}
-		 .navigationTitle("XCA AR Inventory")
+		.navigationTitle("XCA AR Inventory")
 		.onAppear {
 			viewModel.fetchInventoryItems()
 		}
