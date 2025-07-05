@@ -28,26 +28,25 @@ struct InventoryListView: View {
 		.navigationTitle("XCA AR Inventory")
 		.toolbar(content: {
 			ToolbarItem(placement: .primaryAction) {
-				Button(action: {
+				RoundButton(action: {
 					formType = .add
-				}) {
-				   Image(systemName: "plus")
-					   .font(.headline)
-					   .foregroundColor(.white)
-					   .padding(5)
-					   .frame(maxWidth: .infinity)
-					   .background(Color.blue)
-					   .clipShape(.circle)
-					   .shadow(color: .black.opacity(0.4), radius: 8, x: 3, y: 3)
-					   .padding(.horizontal, 5)
-				}
+				}, image: Image(systemName: "plus"))
 			}
+		})
+		.sheet(item: $formType, content: { formType in
+			NavigationStack {
+				InventoryFormView(viewModel: .init(formType: formType))
+			}
+			.presentationDetents([.fraction(0.85)])
+			.interactiveDismissDisabled()
 		})
 		.onAppear {
 			viewModel.fetchInventoryItems()
 		}
     }
 }
+
+
 
 #Preview {
 	NavigationStack {
