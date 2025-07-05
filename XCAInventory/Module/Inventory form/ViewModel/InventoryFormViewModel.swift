@@ -94,9 +94,19 @@ final class InventoryFormViewModel: ObservableObject {
 }
 
 
+enum USDZSourceType {
+	case fileImported
+	case objectCaptured
+}
+
+enum UploadType: Equatable {
+	case usdz, thnumbnail
+}
+
 enum LoadingType: Equatable {
 	case none
 	case savingItem
+	case uploading(UploadType)
 }
 
 enum FormType: Identifiable {
