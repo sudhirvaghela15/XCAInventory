@@ -108,6 +108,39 @@ final class InventoryFormViewModel: ObservableObject {
 	}
 	
 	@MainActor
+	func usdzDelete() async {
+		let storageRef = Storage.storage().reference()
+	   	let usdzRef = storageRef.child("\(id).usdz")
+	   	let thumbnailRef = storageRef.child("\(id).jpg")
+		
+		loadingState = .delete(.usdzWithThumbnail)
+		
+		defer { loadingState = .none }
+		
+		do {
+			try await usdzRef.delete()
+			try? await thumbnailRef.delete()
+			self.usdzURL = nil
+			self.thumbnailURL = nil
+		} catch {
+			self.error = error.localizedDescription
+		}
+	}
+	
+	@MainActor
+	func deleteItem() async throws {
+		loadingState = .delete(.item)
+		do {
+			try await db.document("items/\(id)").delete()
+			try? await Storage.storage().reference().child("\(id).usdz").delete()
+			try? await Storage.storage().reference().child("\(id).jpg").delete()
+		} catch {
+			loadingState = .none
+			throw error
+		}
+	}
+	
+	@MainActor
 	func uploadUSDZ(fileURL: URL) async {
 		let gotAccess = fileURL.startAccessingSecurityScopedResource()
 		
@@ -167,7 +200,7 @@ final class InventoryFormViewModel: ObservableObject {
 				)
 				
 				if let jpdData = thumbnail?.uiImage.jpegData(compressionQuality: 0.5) {
-					loadingState = .uploading(.thnumbnail)
+					loadingState = .uploading(.thumbnail)
 					let thumbnailRef = storageRef.child("\(id).jpg")
 					
 					_ = try? await thumbnailRef.putDataAsync(
@@ -210,13 +243,19 @@ enum USDZSourceType {
 }
 
 enum UploadType: Equatable {
-	case usdz, thnumbnail
+	case usdz, thumbnail
+}
+
+enum DeleteType {
+	case usdzWithThumbnail
+	case item
 }
 
 enum LoadingType: Equatable {
 	case none
 	case savingItem
 	case uploading(UploadType)
+	case delete(DeleteType)
 }
 
 enum FormType: Identifiable {
