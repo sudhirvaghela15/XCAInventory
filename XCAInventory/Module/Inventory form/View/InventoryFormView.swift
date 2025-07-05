@@ -20,9 +20,11 @@ struct InventoryFormView: View {
 			}
 		}.toolbar {
 			ToolbarItem(placement: .cancellationAction) {
-				Button("Cancel") {
-					dismiss()
-				}.disabled(viewModel.loadingState != .none)
+				
+				RoundButton(
+					action: { dismiss() },
+					image: Image(systemName: "xmark")
+				).disabled(viewModel.loadingState != .none)
 			}
 			
 			
