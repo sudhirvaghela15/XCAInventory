@@ -11,8 +11,6 @@ struct InventoryListView: View {
 	
 	@StateObject var viewModel: InventoryListViewModel = .init()
 	
-	@State var formType: FormType?
-	
     var body: some View {
 		List {
 			ForEach(viewModel.inventoryItems) { model in
@@ -20,7 +18,7 @@ struct InventoryListView: View {
 					.listRowSeparator(.hidden)
 					.contentShape(Rectangle())
 					.onTapGesture {
-						formType = .edit(model)
+						viewModel.formType = .edit(model)
 					}
 					
 			}
@@ -29,11 +27,11 @@ struct InventoryListView: View {
 		.toolbar(content: {
 			ToolbarItem(placement: .primaryAction) {
 				RoundButton(action: {
-					formType = .add
+					viewModel.formType = .add
 				}, image: Image(systemName: "plus"))
 			}
 		})
-		.sheet(item: $formType, content: { formType in
+		.sheet(item: $viewModel.formType, content: { formType in
 			NavigationStack {
 				InventoryFormView(viewModel: .init(formType: formType))
 			}

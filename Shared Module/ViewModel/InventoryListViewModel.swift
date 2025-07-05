@@ -14,6 +14,9 @@ class InventoryListViewModel: ObservableObject {
 	@Published
 	var inventoryItems: [InventoryItem] = []
 	
+	@Published
+	var formType: FormType?
+	
 	@MainActor
 	func addInventoryListener() {
 		Firestore
