@@ -34,6 +34,21 @@ final class InventoryFormViewModel: ObservableObject {
 	@Published
 	var error: Error?
 	
+	@Published
+	var uploadProgress: UploadProgress?
+	
+	@Published
+	var showUSDZSource: Bool = false
+	
+	@Published
+	var selectedUSDZSourceTypee: USDZSourceType?
+	
+	let byteCountFormatter: ByteCountFormatter = {
+		let f = ByteCountFormatter()
+		f.countStyle = .file
+		return f
+	}()
+	
 	var navigationTitle: String {
 		switch formType {
 			case .add:
@@ -91,8 +106,103 @@ final class InventoryFormViewModel: ObservableObject {
 			throw error
 		}
 	}
+	
+	@MainActor
+	func uploadUSDZ(fileURL: URL) async {
+		let gotAccess = fileURL.startAccessingSecurityScopedResource()
+		
+		defer {
+			fileURL.stopAccessingSecurityScopedResource()
+			loadingState = .none
+		}
+		
+		guard gotAccess, let data = try? Data(contentsOf: fileURL) else {
+			return
+		}
+		
+		uploadProgress = .init(
+			fractionCompleted: 0,
+			totalUnitCount: 0,
+			completeUnitCount: 0
+		)
+		
+		loadingState = .uploading(.usdz)
+		
+		do {
+			/// upload USDZ to firebase storage
+			let storageRef = Storage.storage().reference()
+			let usdzRef = storageRef.child("\(id).usdz")
+			let metadata = StorageMetadata(dictionary: ["contentType": "model/vnd.usd+zip"])
+			
+			_ = try await usdzRef.putDataAsync(data, metadata: metadata) { [weak self] progress in
+					guard let self, let progress else { return }
+					self.uploadProgress = .init(
+						fractionCompleted: progress.fractionCompleted,
+						totalUnitCount: progress.totalUnitCount,
+						completeUnitCount: progress.completedUnitCount
+					)
+				}
+			
+			let downloadURL = try await usdzRef.downloadURL()
+			
+			/// generate thumbnail
+			let cacheDirURL = FileManager.default.urls(
+				for: .cachesDirectory,
+				in: .userDomainMask
+			).first
+			
+			if let fileCacheURL = cacheDirURL?.appending(path: "temp_\(id).usdz") {
+				
+				try? data.write(to: fileCacheURL)
+				
+				let thumbnailRequest = QLThumbnailGenerator.Request(
+					fileAt: fileCacheURL,
+					size: CGSize(width: 300, height: 300),
+					scale: UIScreen.main.scale,
+					representationTypes: .all
+				)
+				
+				let thumbnail = try? await QLThumbnailGenerator.shared.generateBestRepresentation(
+					for: thumbnailRequest
+				)
+				
+				if let jpdData = thumbnail?.uiImage.jpegData(compressionQuality: 0.5) {
+					loadingState = .uploading(.thnumbnail)
+					let thumbnailRef = storageRef.child("\(id).jpg")
+					
+					_ = try? await thumbnailRef.putDataAsync(
+						jpdData,
+						metadata: .init(dictionary: ["contentType": "image/jpeg"]),
+						onProgress: { [weak self] progress in
+							guard let self, let progress else { return }
+							self.uploadProgress = .init(
+								fractionCompleted: progress.fractionCompleted,
+								totalUnitCount: progress.totalUnitCount,
+								completeUnitCount: progress.completedUnitCount
+							)
+						}
+					)
+					
+					if let thumbnailURL = try? await thumbnailRef.downloadURL() {
+						self.thumbnailURL = thumbnailURL
+					}
+				}
+			}
+			
+			self.usdzURL = downloadURL
+			
+		} catch {
+			self.error = error.localizedDescription
+		}
+	}
 }
 
+
+struct UploadProgress {
+	var fractionCompleted: Double
+	var totalUnitCount: Int64
+	var completeUnitCount: Int64
+}
 
 enum USDZSourceType {
 	case fileImported
