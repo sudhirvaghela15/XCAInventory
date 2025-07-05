@@ -41,7 +41,7 @@ struct InventoryListView: View {
 			.interactiveDismissDisabled()
 		})
 		.onAppear {
-			viewModel.fetchInventoryItems()
+			viewModel.addInventoryListener()
 		}
     }
 }

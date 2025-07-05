@@ -15,13 +15,13 @@ class InventoryListViewModel: ObservableObject {
 	var inventoryItems: [InventoryItem] = []
 	
 	@MainActor
-	func fetchInventoryItems() {
+	func addInventoryListener() {
 		Firestore
 			.firestore()
 			.collection("items")
 			.order(by: "name")
 			.limit(toLast: 100)
-			.getDocuments { snapshot, error in
+			.addSnapshotListener { snapshot, error in
 				guard let snapshot else {
 					cprint(value: error?.localizedDescription)
 					return
