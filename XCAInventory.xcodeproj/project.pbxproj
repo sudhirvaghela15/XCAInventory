@@ -38,6 +38,11 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F2305CE92E19410D00EE091E /* Shared Module */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Shared Module";
+			sourceTree = "<group>";
+		};
 		F28A52352E192908000C084C /* XCAInventory */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -82,6 +87,7 @@
 		F28A522A2E192908000C084C = {
 			isa = PBXGroup;
 			children = (
+				F2305CE92E19410D00EE091E /* Shared Module */,
 				F28A52352E192908000C084C /* XCAInventory */,
 				F28A52462E1929DE000C084C /* XCAInventoryVision */,
 				F28A52472E1929DE000C084C /* Packages */,
@@ -130,6 +136,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				F2305CE92E19410D00EE091E /* Shared Module */,
 				F28A52352E192908000C084C /* XCAInventory */,
 			);
 			name = XCAInventory;
@@ -154,6 +161,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				F2305CE92E19410D00EE091E /* Shared Module */,
 				F28A52462E1929DE000C084C /* XCAInventoryVision */,
 			);
 			name = XCAInventoryVision;
