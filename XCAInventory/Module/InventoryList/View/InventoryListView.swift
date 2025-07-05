@@ -26,6 +26,23 @@ struct InventoryListView: View {
 			}
 		}
 		.navigationTitle("XCA AR Inventory")
+		.toolbar(content: {
+			ToolbarItem(placement: .primaryAction) {
+				Button(action: {
+					formType = .add
+				}) {
+				   Image(systemName: "plus")
+					   .font(.headline)
+					   .foregroundColor(.white)
+					   .padding(5)
+					   .frame(maxWidth: .infinity)
+					   .background(Color.blue)
+					   .clipShape(.circle)
+					   .shadow(color: .black.opacity(0.4), radius: 8, x: 3, y: 3)
+					   .padding(.horizontal, 5)
+				}
+			}
+		})
 		.onAppear {
 			viewModel.fetchInventoryItems()
 		}
