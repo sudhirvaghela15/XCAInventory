@@ -22,11 +22,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 	}
 	
 	private func setupFirebaseLocalEmulator() {
-		var host = "127.0.0.0"
+		var host = "127.0.0.1"
 		#if !targetEnvironment(simulator)
 		host = "172.20.10.4"
 		#endif
 		let settings = Firestore.firestore().settings
+		settings.isSSLEnabled = false // ⚠️ Important: disable SSL for emulator
 		settings.host = host+":8080"
 		settings.cacheSettings = MemoryCacheSettings()
 		Firestore.firestore().settings = settings

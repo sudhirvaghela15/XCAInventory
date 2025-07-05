@@ -14,7 +14,7 @@ struct XCAInventoryApp: App {
 	
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			InventoryListView()
         }
     }
 }

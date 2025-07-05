@@ -19,6 +19,7 @@ class InventoryListViewModel: ObservableObject {
 		Firestore
 			.firestore()
 			.collection("items")
+			.order(by: "name")
 			.limit(toLast: 100)
 			.getDocuments { snapshot, error in
 				guard let snapshot else {
