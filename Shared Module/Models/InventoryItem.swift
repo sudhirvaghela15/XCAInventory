@@ -19,7 +19,7 @@ struct InventoryItem: Identifiable, Codable, Equatable {
 	var updateAt: Date?
 	
 	var name: String
-	var qunatity: Int
+	var quantity: Int
 	
 	var usdzLink: String?
 	var usdzURL: URL? {
