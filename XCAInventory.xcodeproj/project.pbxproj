@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F28A524A2E1929DE000C084C /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52492E1929DE000C084C /* RealityKitContent */; };
+		F2305CE82E1940B400EE091E /* RealityKitContent in Frameworks */ = {isa = PBXBuildFile; productRef = F2305CE72E1940B400EE091E /* RealityKitContent */; };
 		F28A52582E193126000C084C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52572E193126000C084C /* FirebaseFirestore */; };
 		F28A525A2E193126000C084C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F28A52592E193126000C084C /* FirebaseStorage */; };
 		F28A525D2E193179000C084C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F28A525C2E193179000C084C /* FirebaseFirestore */; };
@@ -21,6 +21,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F2305CE62E19404000EE091E /* Exceptions for "XCAInventory" folder in "XCAInventory" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F28A52322E192908000C084C /* XCAInventory */;
+		};
 		F28A52522E1929E0000C084C /* Exceptions for "XCAInventoryVision" folder in "XCAInventoryVision" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -33,6 +40,9 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F28A52352E192908000C084C /* XCAInventory */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F2305CE62E19404000EE091E /* Exceptions for "XCAInventory" folder in "XCAInventory" target */,
+			);
 			path = XCAInventory;
 			sourceTree = "<group>";
 		};
@@ -60,8 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F28A524A2E1929DE000C084C /* RealityKitContent in Frameworks */,
 				F28A525D2E193179000C084C /* FirebaseFirestore in Frameworks */,
+				F2305CE82E1940B400EE091E /* RealityKitContent in Frameworks */,
 				F28A525F2E193181000C084C /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,9 +158,9 @@
 			);
 			name = XCAInventoryVision;
 			packageProductDependencies = (
-				F28A52492E1929DE000C084C /* RealityKitContent */,
 				F28A525C2E193179000C084C /* FirebaseFirestore */,
 				F28A525E2E193181000C084C /* FirebaseStorage */,
+				F2305CE72E1940B400EE091E /* RealityKitContent */,
 			);
 			productName = XCAInventoryVision;
 			productReference = F28A52452E1929DE000C084C /* XCAInventoryVision.app */;
@@ -363,6 +373,7 @@
 				DEVELOPMENT_TEAM = 7RC8RLSUKW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XCAInventory/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -391,6 +402,7 @@
 				DEVELOPMENT_TEAM = 7RC8RLSUKW;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XCAInventory/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,7 +519,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F28A52492E1929DE000C084C /* RealityKitContent */ = {
+		F2305CE72E1940B400EE091E /* RealityKitContent */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = RealityKitContent;
 		};
