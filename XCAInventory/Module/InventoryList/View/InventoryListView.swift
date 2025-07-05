@@ -14,7 +14,7 @@ struct InventoryListView: View {
     var body: some View {
 		List {
 			ForEach(viewModel.inventoryItems) { model in
-				Text(model.name)
+				InventoryListItemView(model: model)
 			}
 		}
 		.navigationTitle("XCA AR Inventory")
@@ -22,6 +22,15 @@ struct InventoryListView: View {
 			viewModel.fetchInventoryItems()
 		}
     }
+}
+
+struct InventoryListItemView: View {
+	
+	let model: InventoryItem
+	
+	var body: some View {
+		Text(model.name)
+	}
 }
 
 #Preview {
