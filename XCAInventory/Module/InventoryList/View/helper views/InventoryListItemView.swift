@@ -34,7 +34,8 @@ struct InventoryListItemView: View {
 			)
 			.overlay(content: {
 				RoundedRectangle(cornerRadius: 16)
-					.stroke(.gray.opacity(0.5), lineWidth: 1)
+					.stroke(.gray.opacity(0.5), lineWidth: 1.5)
+					.shadow(radius: 8)
 			}).frame(width: 150, height: 150)
 			
 			VStack(alignment: .leading) {
