@@ -24,6 +24,7 @@
 		F28A52332E192908000C084C /* XCAInventory.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCAInventory.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F28A52452E1929DE000C084C /* XCAInventoryVision.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XCAInventoryVision.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F28A52482E1929DE000C084C /* RealityKitContent */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RealityKitContent; sourceTree = "<group>"; };
+		F2B2EA642E1A604800A59E52 /* XCAInventory.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XCAInventory.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -93,6 +94,7 @@
 		F28A522A2E192908000C084C = {
 			isa = PBXGroup;
 			children = (
+				F2B2EA642E1A604800A59E52 /* XCAInventory.entitlements */,
 				F2773A3C2E19D9680034C5B6 /* AirForce1XCA.usdz */,
 				F2773A3D2E19D9680034C5B6 /* xbox-controller.usdz */,
 				F2305CE92E19410D00EE091E /* Shared Module */,
