@@ -8,7 +8,7 @@
 import Foundation
 
 @discardableResult
-func cprint<T>(value: T, label: String = "DebugValue") -> T {
+func cprint<T>(_ value: T, label: String = "DebugValue") -> T {
 	debugPrint("\(label): \(value)")
 	return value
 }

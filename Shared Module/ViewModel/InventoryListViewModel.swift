@@ -26,7 +26,7 @@ class InventoryListViewModel: ObservableObject {
 			.limit(toLast: 100)
 			.addSnapshotListener { snapshot, error in
 				guard let snapshot else {
-					cprint(value: error?.localizedDescription)
+					cprint(error?.localizedDescription)
 					return
 				}
 				
