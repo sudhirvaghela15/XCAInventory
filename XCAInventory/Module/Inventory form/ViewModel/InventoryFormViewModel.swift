@@ -257,17 +257,3 @@ enum LoadingType: Equatable {
 	case uploading(UploadType)
 	case delete(DeleteType)
 }
-
-enum FormType: Identifiable {
-	case add
-	case edit(InventoryItem)
-	
-	var id: String {
-		switch self {
-		case .add:
-			return "add"
-		case .edit(let inventoryItem):
-			return "edit\(inventoryItem.id)"
-		}
-	}
-}
