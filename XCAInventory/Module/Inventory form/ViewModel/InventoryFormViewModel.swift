@@ -100,7 +100,7 @@ final class InventoryFormViewModel: ObservableObject {
 		
 		do {
 			try db.document("items/\(item.id)")
-				.setData(from: item, merge: true)
+				.setData(from: item)
 		} catch {
 			self.error = error.localizedDescription
 			throw error
