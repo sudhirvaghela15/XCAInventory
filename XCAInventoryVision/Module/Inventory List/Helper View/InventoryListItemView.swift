@@ -12,9 +12,16 @@ struct InventoryListItemView: View {
 	
 	let model: InventoryItem
 	
+	@EnvironmentObject
+	var navigationViewModel: NavigationViewModel
+
+	@Environment(\.openWindow)
+	var openWindow
+	
 	var body: some View {
 		Button {
-			
+			navigationViewModel.selectedItem = model
+			openWindow(id: "item")
 		} label: {
 			labelView
 		}.buttonStyle(.borderless)

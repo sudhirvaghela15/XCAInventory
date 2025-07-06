@@ -9,7 +9,8 @@ import SwiftUI
 
 struct InventoryListView: View {
 	
-	@StateObject var viewModel: InventoryListViewModel = .init()
+	@StateObject
+	var viewModel: InventoryListViewModel = .init()
 	
 	private let gridItems: [GridItem] = [
 		.init(.adaptive(minimum: 240), spacing: 16)
