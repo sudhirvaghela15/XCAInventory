@@ -65,14 +65,12 @@ struct InventoryFormView: View {
 			}
 			
 			ToolbarItem(placement: .confirmationAction) {
-				Button("Save") {
-					do {
-						try viewModel.save()
-						dismiss()
-					} catch {
-						
-					}
-				}.disabled(
+				
+				RoundButton(action: {
+					try? viewModel.save()
+					dismiss()
+				}, image: Image(systemName: "checkmark"))
+				.disabled(
 					viewModel.loadingState != .none || viewModel.name
 						.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
 				)
