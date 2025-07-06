@@ -23,17 +23,19 @@ struct InventoryListItemView: View {
 						switch reuslt {
 						case .success(let image):
 							image.resizable()
-							image.aspectRatio(contentMode: .fit)
+								.aspectRatio(contentMode: .fit)
 						default: ProgressView()
 						}
 					}
 				}
 			}
+			.clipShape(
+				RoundedRectangle(cornerRadius: 16)
+			)
 			.overlay(content: {
 				RoundedRectangle(cornerRadius: 16)
 					.stroke(.gray.opacity(0.5), lineWidth: 1)
-			})
-			.frame(width: 150, height: 150)
+			}).frame(width: 150, height: 150)
 			
 			VStack(alignment: .leading) {
 				Text(model.name)
