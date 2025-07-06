@@ -22,16 +22,18 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 	}
 	
 	private func setupFirebaseLocalEmulator() {
+		/// port are used same as set in firebase local project json
 		var host = "127.0.0.1"
 		#if !targetEnvironment(simulator)
-		host = "172.20.10.4"
+		host = "192.168.87.82" /// settings -> wifi -> ip adresss and make sure wirewall is disabled
 		#endif
+		let storage = Storage.storage()
+		storage.useEmulator(withHost: host, port: 9198)
+		
 		let settings = Firestore.firestore().settings
-		settings.isSSLEnabled = false // ⚠️ Important: disable SSL for emulator
-		settings.host = host+":8080"
+		settings.isSSLEnabled = false /// ⚠️ Important: disable SSL for emulator
+		settings.host = host+":8081"
 		settings.cacheSettings = MemoryCacheSettings()
 		Firestore.firestore().settings = settings
-		//
-		Storage.storage().useEmulator(withHost: host, port: 9199)
 	}
 }
