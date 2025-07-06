@@ -34,6 +34,7 @@ struct InventoryFormView: View {
 					HStack {
 						Spacer()
 						VStack(spacing: 10) {
+							ProgressView()
 							Text("Deleting \(type == .usdzWithThumbnail ? "USDZ file" : "Item")")
 								.foregroundStyle(.red )
 						}
