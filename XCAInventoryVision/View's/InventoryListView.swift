@@ -50,6 +50,8 @@ struct InventoryListItemView: View {
 						Text("Not Available")
 					}
 				}
+				.frame(width: 160, height: 160)
+				.padding(32)
 				
 				Text(model.name)
 				Text("Quantity: \(model.quantity)")
