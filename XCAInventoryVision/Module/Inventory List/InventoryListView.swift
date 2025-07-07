@@ -21,6 +21,15 @@ struct InventoryListView: View {
 			LazyVGrid(columns: gridItems) {
 				ForEach(viewModel.inventoryItems) { model in
 					InventoryListItemView(model: model)
+						.onDrag {
+							guard let usdzURL = model.usdzURL else  {
+								return NSItemProvider()
+							}
+							
+							return NSItemProvider(
+								object: USDZItemProvider(usdzURL: usdzURL)
+							)
+						}
 				}
 			}
 			.padding(.vertical)
